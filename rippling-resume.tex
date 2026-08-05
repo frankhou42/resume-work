@@ -1,0 +1,144 @@
+%==============================================================
+% Frank Hou — rippling-resume (tailored: Rippling, SWE Intern, Backend)
+% One-page. Compile with pdflatex.
+%==============================================================
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage[left=0.42in,right=0.42in,top=0.32in,bottom=0.32in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\footskip}{4pt}
+\raggedbottom
+
+% --- Section formatting: small-caps title + rule -------------
+\titleformat{\section}
+  {\large\scshape\raggedright}
+  {}{0em}{}[\vspace{-5pt}\rule{\linewidth}{0.5pt}\vspace{-5pt}]
+\titlespacing*{\section}{0pt}{4pt}{2pt}
+
+% --- List defaults -------------------------------------------
+\setlist[itemize]{leftmargin=1.1em,label={--},itemsep=0pt,parsep=0pt,topsep=0pt}
+
+% --- Resume macros (match existing template) -----------------
+\newcommand{\resumeWorkHeading}[2]{%
+  \vspace{1pt}\noindent
+  \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}r@{}}
+    #1 & #2 \\
+  \end{tabular*}%
+  \vspace{-4pt}
+}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{0pt}}
+\newcommand{\resumeItem}[1]{\item #1}
+
+\begin{document}
+
+%==============================================================
+% Header
+%==============================================================
+\begin{center}
+  {\huge \textbf{Frank Hou}} \\[2pt]
+  \small
+  \href{mailto:frankhou@utexas.edu}{frankhou@utexas.edu} $|$
+  \href{https://linkedin.com/in/yufanhou}{linkedin.com/in/yufanhou} $|$
+  \href{https://github.com/frankhou42}{github.com/frankhou42}
+\end{center}
+\vspace{-6pt}
+
+%==============================================================
+% Education
+%==============================================================
+\section{Education}
+\resumeWorkHeading
+{\textbf{University of Texas at Austin} $|$ \emph{B.S. Computer Science, GPA: 3.7/4.0}}{Expected May 2027}
+\resumeItemListStart
+\resumeItem{Coursework: Operating Systems, Algorithms, Machine Learning, Data Structures, Computer Architecture, Linear Algebra}
+\resumeItemListEnd
+
+%==============================================================
+% Experience
+%==============================================================
+\section{Experience}
+\resumeWorkHeading
+{\textbf{Amazon} $|$ \emph{Software Engineering Intern, Shipping}}{May 2026 -- Present}
+\resumeItemListStart
+\resumeItem{Re-architected a production backend read path in the \textbf{Tier-1} Delivery Window Service off live \textbf{DynamoDB} reads onto versioned \textbf{RODB} snapshots in \textbf{S3}, removing a hot database dependency and lowering read latency on a large-scale, high-traffic path}
+\resumeItem{Built \textbf{AWS Glue} + \textbf{Apache Spark} \textbf{ETL} pipelines in \textbf{Scala} (\textbf{Hadoop} S3A, \textbf{AWS SDK}) scanning \textbf{DynamoDB} every \textbf{30 min} at a \textbf{50\%} read-capacity cap, deduplicating schedules and publishing \textbf{RODB} snapshots to S3 with atomic versioned uploads}
+\resumeItem{Engineered a \textbf{Java}/\textbf{Spring} backend consumer that polls \textbf{AWS AppConfig} for the safe version and hot-swaps S3 snapshots in memory via lock-free \textbf{multithreading} (\textbf{AtomicReference} + \textbf{Jackson}), with stale-blob fallback for graceful degradation}
+\resumeItem{Deployed \textbf{CDK} (\textbf{TypeScript}), cross-account \textbf{IAM/STS}, \textbf{CodePipeline}, and \textbf{CloudWatch} alarms driving auto-rollback \textbf{CI/CD} rollouts across \textbf{ECS}/\textbf{CloudFormation} stacks in \textbf{20 prod stages} and 3 realms}
+\resumeItem{Root-caused a silent \textbf{Spark} schema/connector type mismatch that was nulling nested \textbf{DynamoDB} attributes, restoring \textbf{100\%} field fidelity, and shipped \textbf{15+} peer-reviewed \textbf{CRs} to production}
+\resumeItemListEnd
+
+\resumeWorkHeading
+{\textbf{Scale AI} $|$ \emph{GenAI / AI Safety Evaluation Intern}}{May 2025 -- May 2026}
+\resumeItemListStart
+\resumeItem{Created prompts, reference solutions, and grading rubrics for \textbf{120+} Olympiad-level coding tasks, improving reliability of AI model evaluation across reviewers}
+\resumeItem{Built deterministic \textbf{Python} suites with \textbf{1,200+} unit, edge, and regression tests, reducing ambiguous grading decisions by \textbf{35\%}}
+\resumeItem{Supported \textbf{10k+} weekly evaluations by contributing to \textbf{React}, \textbf{TypeScript}, \textbf{Flask}, \textbf{AWS}, and \textbf{Kubernetes} tooling and failure analyses guiding model iteration}
+\resumeItemListEnd
+
+\resumeWorkHeading
+{\textbf{Machine Intelligence Through Decision-Making Lab} $|$ \emph{Research Assistant}}{Fall 2025 -- Present}
+\resumeItemListStart
+\resumeItem{Extended VIP and DERAIL offline \textbf{RL} frameworks in \textbf{PyTorch} to analyze \textbf{100k+} Franka-Kitchen and D4RL robotics trajectories for model-based planning and ranking research}
+\resumeItem{Benchmarked learned value functions across 6 settings, exposing score collapse, high-variance rankings, and weak action sensitivity in candidate rollouts}
+\resumeItem{Built diagnostics for \textbf{50+} planning runs to visualize value landscapes, rollout quality, reward alignment, and learned-dynamics failure modes}
+\resumeItemListEnd
+
+%==============================================================
+% Projects
+%==============================================================
+\section{Projects}
+\resumeWorkHeading
+{\textbf{Tree} $|$ \emph{Local LLM Infrastructure System} $|$ Swift, Ollama, LangChain}{Fall 2025 -- Spring 2026}
+\resumeItemListStart
+\resumeItem{Built a macOS LLM context system with \textbf{300+} saved branches, reusable context paths, and structured prompt workflows for local-first AI experimentation}
+\resumeItem{Integrated \textbf{Llama 3.2} via \textbf{Ollama} for private on-device inference, cutting repeated cloud inference cost to \$0}
+\resumeItem{Ran \textbf{100+} context-depth experiments and improved response stability by \textbf{18\%} via reusable context patterns}
+\resumeItemListEnd
+
+\resumeWorkHeading
+{\textbf{MoodScribe} $|$ \emph{AI Messaging Assistant} $|$ PyTorch, React, Flask, TypeScript}{Fall 2025}
+\resumeItemListStart
+\resumeItem{Built a full-stack AI messaging assistant serving \textbf{100+} users and \textbf{2,000+} messages via \textbf{React} onboarding, \textbf{Flask} inference APIs, and \textbf{PyTorch} response generation}
+\resumeItem{Improved human-rated tone consistency by \textbf{22\%} by evaluating \textbf{300+} conversation samples and refining prompt strategies}
+\resumeItem{Reduced fine-tuning memory usage by \textbf{70\%} using \textbf{LoRA} adapters, \textbf{FlashAttention}, and \textbf{Unsloth} on limited GPU compute}
+\resumeItemListEnd
+
+%==============================================================
+% Technical Skills
+%==============================================================
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0em,label={},itemsep=0pt,parsep=0pt,topsep=0pt]
+\item \textbf{Languages:} Python, Java, SQL, TypeScript, JavaScript, Scala, C/C++, Swift
+\item \textbf{Backend:} Backend API Design, REST APIs, Spring, Flask, Node.js, Microservices, Concurrency \& Multithreading, Data Modeling, Performance Tuning
+\item \textbf{Data \& Infra:} DynamoDB, S3, Apache Spark, ETL Pipelines, AWS, GCP, Kubernetes, Docker, Linux, CI/CD, CloudWatch, Distributed Systems
+\item \textbf{ML/AI \& Tools:} PyTorch, TensorFlow, LangChain, LLM Evaluation, Git, CDK, IAM, CodePipeline, Code Review, Testing \& Debugging
+\end{itemize}
+
+%==============================================================
+% Leadership
+%==============================================================
+\section{Leadership}
+\resumeWorkHeading
+{\textbf{Texas ACM} $|$ \emph{Chair of Internal Affairs}}{Fall 2023 -- Present}
+\resumeItemListStart
+\resumeItem{Led operations for \textbf{10+} technical and recruiting events by coordinating logistics, speaker planning, and member engagement}
+\resumeItemListEnd
+
+\resumeWorkHeading
+{\textbf{Sanger Learning Center} $|$ \emph{Computer Science Tutor}}{Fall 2025 -- Present}
+\resumeItemListStart
+\resumeItem{Tutored students weekly in data structures, algorithms, recursion, and object-oriented programming, explaining \textbf{Java}, \textbf{Python}, and runtime tradeoffs through guided sessions that built independent debugging and problem-solving habits}
+\resumeItemListEnd
+
+\end{document}

@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Python virtual envs & caches
+.venv/
+venv/
+__pycache__/
+.mypy_cache/
+.pytest_cache/
+*.pyc
+.coverage
+
+# Build output
+dist/
+build/
+
+# OS / editor junk
+.DS_Store
+*.log

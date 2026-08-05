@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+conversation.json
+dataFile.txt
+
+# Node / frontend
+frontend/node_modules/
+frontend/dist/
+
+# Secrets — never commit
+.env
+*.env

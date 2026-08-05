@@ -1,0 +1,90 @@
+:root {
+  --bg: #0f1117;
+  --panel: #171a22;
+  --fg: #e8e8ec;
+  --muted: #9a9aa5;
+  --accent: #7c6cff;
+  --me: #7c6cff;
+  --them: #262a35;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+.app {
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+header h1 { margin: 0 0 0.25rem; font-size: 1.9rem; letter-spacing: -0.02em; }
+header p { margin: 0 0 1.75rem; color: var(--muted); font-size: 0.95rem; }
+
+.thread {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--panel);
+  border-radius: 14px;
+  margin-bottom: 1rem;
+}
+.bubble {
+  max-width: 80%;
+  padding: 0.6rem 0.85rem;
+  border-radius: 14px;
+  line-height: 1.4;
+  font-size: 0.95rem;
+}
+.bubble.me { align-self: flex-end; background: var(--me); color: #fff; }
+.bubble.them { align-self: flex-start; background: var(--them); }
+
+.composer { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+.composer input {
+  flex: 1;
+  padding: 0.65rem 0.85rem;
+  border-radius: 10px;
+  border: 1px solid #2c313d;
+  background: var(--panel);
+  color: var(--fg);
+  font-size: 0.95rem;
+}
+button {
+  padding: 0.65rem 1rem;
+  border: none;
+  border-radius: 10px;
+  background: var(--them);
+  color: var(--fg);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+button:hover { filter: brightness(1.15); }
+.analyze {
+  width: 100%;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  padding: 0.8rem;
+}
+.analyze:disabled { opacity: 0.6; cursor: default; }
+
+.error { color: #ff7a7a; font-size: 0.9rem; margin-top: 0.75rem; }
+
+.result {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  background: var(--panel);
+  border-radius: 14px;
+  border: 1px solid #2c313d;
+}
+.suggested { font-size: 1.1rem; line-height: 1.5; margin-bottom: 0.9rem; }
+.signals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.signals b { color: var(--fg); font-weight: 600; }

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodScribe Login</title>
+    <style>
+        /* Importing a cyberpunk-style font */
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+        /* Basic Reset and Body Style */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Orbitron', sans-serif;
+            color: #00ffe1;
+            background-color: #1a1a2e;
+        }
+
+        /* Video Background */
+        /* Background video styling */ #background-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0.5; /* Adjust transparency as needed */ }
+
+        /* Login Container */
+        .login-container {
+            width: 350px;
+            padding: 30px;
+            background: rgba(26, 26, 46, 0.85);
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px #00ffe1, 0px 0px 60px #ff00e6;
+            text-align: center;
+            color: #00ffe1;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Title Styling */
+        .login-container h2 {
+            font-size: 24px;
+            color: #ff00e6;
+            margin-bottom: 20px;
+            text-shadow: 0px 0px 8px #00ffe1, 0px 0px 12px #ff00e6;
+        }
+
+        /* Label Styling */
+        .login-container label {
+            font-size: 16px;
+            color: #00ffe1;
+            margin-bottom: 10px;
+        }
+
+        /* Input Styling */
+        .login-container input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0 15px;
+            background: rgba(26, 26, 46, 0.9);
+            border: 1px solid #00ffe1;
+            border-radius: 5px;
+            color: #00ffe1;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        /* Button Styling */
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            color: #1a1a2e;
+            background-color: #ff00e6;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-shadow: 0px 0px 5px #00ffe1;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .login-container button:hover {
+            background-color: #ff66e6;
+            transform: scale(1.05);
+        }
+
+        .login-container button:active {
+            background-color: #ff00e6;
+            transform: scale(0.95);
+        }
+
+        /* Success/Error Message Styling */
+        .error, .success {
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        .error {
+            color: #ff0040;
+            text-shadow: 0 0 6px #ff0040;
+        }
+
+        .success {
+            color: #00ff00;
+            text-shadow: 0 0 6px #00ff00;
+        }
+
+        /* Thread ID Suggestion Section */
+        .thread-suggestions {
+            display: none; /* Hidden by default */
+            margin-top: 20px;
+        }
+
+        .suggested-thread {
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            margin: 5px 0;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .suggested-thread:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .content-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Centered Login Container */
+.login-container {
+    width: 350px;
+    padding: 30px;
+    background: rgba(26, 26, 46, 0.85);
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px #00ffe1, 0px 0px 60px #ff00e6;
+    text-align: center;
+    color: #00ffe1;
+    backdrop-filter: blur(10px);
+    z-index: 1; /* Ensures it appears on top of the image */
+}
+
+/* Image positioned to the left */
+.login-image {
+    position: absolute;
+    left: -75%; /* Adjust as needed for positioning */
+    max-width: 150px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px #00ffe1, 0px 0px 60px #ff00e6;
+}
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="background-video"> <source src="rog.mp4" type="video/mp4"> </video>
+    <div class="content-wrapper">
+     
+    <!-- Login Form Container -->
+    <div class="login-container">
+        <h2>MoodScribe</h2>
+        <form id="loginForm" onsubmit="login(event)">
+            <label for="usernameL"> Username </label>
+            <input type="text" id="usernameID" name="username" placeholder="Enter Username" required>
+            <label for="sessionL"> Password </label>
+            <input type="text" id="passwordID" name="password" placeholder="Enter Password" required>
+            <button type="submit">ENTER</button>
+        </form>
+        <div id="message" class="error"></div>
+
+        <!-- Thread ID Suggestion Section -->
+        <div class="thread-suggestions" id="threadSuggestions">
+            <label for="threadID">Choose a Thread ID:</label>
+            <input type="text" id="threadID" name="threadID" placeholder="Optional" />
+            <div class="suggested-thread" onclick="selectThread('Rohan')">Rohan</div>
+            <div class="suggested-thread" onclick="selectThread('Frank 侯煜凡')">Frank 侯煜凡</div>
+            <div class="suggested-thread" onclick="selectThread('Matthew')">Matthew</div>
+            <div class="suggested-thread" onclick="selectThread('Felipe')">Felipe</div>
+            <div class="suggested-thread" onclick="selectThread('None')">None</div>
+        </div>
+    </div>
+    
+</div>
+
+    <script>
+        // JavaScript function to handle login
+        function login(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Example
+            const validUsername = "correctusername";
+            const usernameinput = document.getElementById("usernameID").value;
+            const validPassword = "correctpassword";
+            const passwordinput = document.getElementById("passwordID").value;
+            const message = document.getElementById("message");
+            const threadSuggestions = document.getElementById("threadSuggestions");
+
+            message.textContent = ""; // Clear previous messages
+
+            if (validUsername == usernameinput && validPassword == passwordinput) {
+                message.textContent = "Access Granted!";
+                message.className = "success";
+                threadSuggestions.style.display = "block"; // Show thread ID suggestions
+            } else {
+                message.textContent = "Access Denied!";
+                message.className = "error";
+            }
+
+            message.textContent = ""; // Clear previous messages
+
+    // Send credentials to Flask API
+    fetch('/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            username: usernameinput,
+            password: passwordinput
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            message.textContent = "Access Granted!";
+            message.className = "success";
+            threadSuggestions.style.display = "block"; // Show thread ID suggestions
+        } else {
+            message.textContent = "Access Denied!";
+            message.className = "error";
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        message.textContent = "An error occurred.";
+        message.className = "error";
+    });
+        }
+
+        // Function to select a thread ID
+        function selectThread(threadID) {
+            document.getElementById("threadID").value = threadID;
+    
+            // Make an API call to set the thread in the session
+            fetch('/set_thread', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+            body: JSON.stringify({ thread_id: threadID })
+            })
+        .then(response => response.json())
+        .then(data => {
+        if (data.success) {
+            window.location.href='analyze'
+            console.log('Thread ID set successfully');
+            // You can add additional UI feedback here if needed
+        } else {
+            console.error('Failed to set thread ID');
+            // Handle the error case
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Handle any network or other errors
+    });
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Frank Hou</title>
+<meta name="description" content="Frank Hou — CS @ UT Austin. Machine learning and systems." />
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1b1b1b;
+    --muted: #555;
+    --link: #1155cc;
+    --rule: #e2e2e2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#101012; --fg:#e6e6e6; --muted:#9b9b9b; --link:#7fa8ff; --rule:#2a2a2e; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 42rem; margin: 0 auto; padding: 3.5rem 1.4rem 5rem; }
+  h1 { font-size: 2rem; font-weight: normal; margin: 0 0 0.25rem; }
+  .nav { margin: 0 0 1.75rem; font-size: 0.98rem; }
+  .nav a { color: var(--link); text-decoration: none; margin-right: 0.9rem; }
+  .nav a:hover { text-decoration: underline; }
+  p { margin: 0 0 1rem; }
+  a { color: var(--link); }
+  .section-label { font-weight: bold; margin: 1.9rem 0 0.6rem; }
+  ul { margin: 0 0 0.5rem; padding-left: 1.3rem; }
+  li { margin-bottom: 0.5rem; color: var(--fg); }
+  .venue { color: var(--muted); }
+  .me { font-weight: bold; }
+  .contact { color: var(--muted); font-size: 0.95rem; margin-top: 1.5rem; }
+  hr { border: none; border-top: 1px solid var(--rule); margin: 2rem 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Frank Hou</h1>
+  <div class="nav">
+    <a href="mailto:frankhou@utexas.edu">Email</a>
+    <a href="Frank_Hou_Resume.pdf">CV</a>
+    <a href="https://github.com/frankhou42">GitHub</a>
+    <a href="https://linkedin.com/in/yufanhou">LinkedIn</a>
+  </div>
+
+  <p>
+    I&rsquo;m an undergraduate in Computer Science at the
+    <a href="https://www.utexas.edu/">University of Texas at Austin</a> (B.S., expected 2027).
+    I work at the intersection of machine learning and systems, and I&rsquo;m a research assistant
+    in UT&rsquo;s Machine Intelligence through Decision-making lab, where I study offline
+    reinforcement learning.
+  </p>
+  <p>
+    Previously and currently I&rsquo;ve interned at <span class="me">Amazon</span> (Shipping —
+    low-latency data infrastructure) and <span class="me">Scale AI</span> (GenAI / AI-safety
+    evaluation). I&rsquo;m interested in LLM evaluation, on-device inference, and the systems that
+    make models fast and reliable in production.
+  </p>
+  <p class="contact">
+    frankhou [at] utexas [dot] edu
+  </p>
+
+  <div class="section-label">Research &amp; Experience:</div>
+  <ul>
+    <li>
+      <span class="me">Software Engineering Intern</span>, Amazon (Shipping). <span class="venue">May 2026 – Present.</span>
+      Moving Delivery Windows schedule serving from live DynamoDB reads to versioned S3 snapshots;
+      Glue/Spark ETL over 2M+ records with rollback-safe promotion.
+    </li>
+    <li>
+      <span class="me">GenAI / AI Safety Evaluation Intern</span>, Scale AI. <span class="venue">May 2025 – May 2026.</span>
+      Rubrics and deterministic test suites for 120+ Olympiad-level tasks; React/TS/Flask tooling
+      supporting 10k+ weekly evaluations.
+    </li>
+    <li>
+      <span class="me">Research Assistant</span>, Machine Intelligence through Decision-making Lab, UT Austin.
+      <span class="venue">Fall 2025 – Present.</span>
+      Extending VIP and DERAIL offline-RL frameworks in PyTorch; benchmarking learned value functions
+      over 100k+ D4RL / Franka-Kitchen trajectories.
+    </li>
+  </ul>
+
+  <div class="section-label">Projects:</div>
+  <ul>
+    <li>
+      <a href="https://github.com/frankhou42/Tree">Tree</a> —
+      native macOS client for local LLMs; streams Llama 3.2 via Ollama with context-carrying
+      conversation branches. <span class="venue">Swift, SwiftUI.</span>
+    </li>
+    <li>
+      <a href="https://github.com/frankhou42/MoodScribe">MoodScribe</a> —
+      emotion-aware messaging assistant; LoRA fine-tuning (Unsloth) behind a Flask API with a
+      React/TypeScript client. <span class="venue">PyTorch, Flask, React.</span>
+    </li>
+    <li>
+      <a href="https://github.com/frankhou42/micrograd">micrograd</a> —
+      a scalar autograd engine and small neural-net library built from scratch.
+      <span class="venue">Python.</span>
+    </li>
+  </ul>
+
+  <div class="section-label">Leadership:</div>
+  <ul>
+    <li>Chair of Internal Affairs, Texas ACM. <span class="venue">Fall 2023 – Present.</span></li>
+    <li>Computer Science Tutor, Sanger Learning Center. <span class="venue">Fall 2025 – Present.</span></li>
+  </ul>
+
+</div>
+</body>
+</html>

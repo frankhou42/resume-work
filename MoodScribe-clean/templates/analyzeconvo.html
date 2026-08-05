@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Log with Contact Name</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic reset and body styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Orbitron', sans-serif;
+            color: #00ffe1;
+            background-color: #1a1a2e;
+            overflow: hidden;
+        }
+
+        /* Chat Log Container */
+        .chat-log-container {
+            width: 70%;
+            height: 90vh;
+            padding: 20px;
+            background: rgba(26, 26, 46, 0.85);
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px #00ffe1, 0px 0px 60px #ff00e6;
+            color: #00ffe1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Contact Name Styling */
+        .contact-name {
+            font-size: 24px;
+            color: #ff00e6;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0px 0px 8px #00ffe1, 0px 0px 12px #ff00e6;
+        }
+
+        /* Chat Messages Section */
+        #chatMessages {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding-right: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Message Container for Other Messages with Image */
+        .message-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        /* Emotion Image next to other messages */
+        .emotion-image {
+            width: 40px;  /* Smaller size for the profile image */
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .emotion-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            cursor: pointer; /* Indicate hoverable item */
+        }
+
+        /* Thought Bubble */
+        .thought-bubble {
+            position: absolute;
+            top: -40px;
+            left: 40px;
+            max-width: 150px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #1a1a2e;
+            padding: 8px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+            display: none; /* Hidden by default */
+            z-index: 1;
+        }
+
+        /* Text Bubble Styling */
+        .message {
+            display: inline-block;
+            max-width: 75%;
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 14px;
+            line-height: 1.5;
+            word-wrap: break-word;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .message.other {
+            background-color: rgba(255, 0, 70, 0.8);
+            color: #fff;
+            border-radius: 15px 15px 15px 5px;
+            align-self: flex-start;
+        }
+
+        .message.user {
+            background-color: rgba(0, 255, 225, 0.8);
+            color: #1a1a2e;
+            border-radius: 15px 15px 5px 15px;
+            align-self: flex-end;
+        }
+
+        /* Bottom Section */
+        .bottom-section {
+            display: flex;
+            align-items: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            gap: 10px;
+        }
+
+        /* Circular Mood Score */
+        .mood-score {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: conic-gradient(#ff00e6 0deg, #1a1a2e 0deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mood-score img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer; /* Indicate hoverable item */
+        }
+
+        /* Locking the "Suggested Response" input box */
+        .suggested-response {
+            flex-grow: 1;
+            max-width: 750px;
+            padding: 12px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            font-size: 14px;
+            color: #00ffe1;
+            border: 1px solid #00ffe1;
+            pointer-events: none; /* Locks the text box */
+        }
+
+        /* Action buttons */
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .action-buttons button {
+            padding: 5px 10px;
+            font-size: 12px;
+            font-family: 'Orbitron', sans-serif;
+            color: #1a1a2e;
+            background-color: #00ffe1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .action-buttons button:hover {
+            background-color: #ff00e6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chat-log-container">
+        <div class="contact-name" id="contactName">Rohan</div>
+        <div id="chatMessages">
+            <div class="message-container">
+                <!-- <div class="emotion-image">
+                    <img src="anxiety.gif" alt="Emotion" onmouseover="showBubble(this, 'Thinking about something...')" onmouseout="hideBubble(this)">
+                    <div class="thought-bubble">Thinking about something...</div>
+                </div>
+                <div class="message other">Hey! How's it going?</div> -->
+            </div>
+            <!-- <div class="message user">I'm doing great, thanks! How about you?</div> -->
+            <div class="message-container">
+                <!-- <div class="emotion-image">
+                    <img src="anxiety.gif" alt="Emotion" onmouseover="showBubble(this, 'I might need some help...')" onmouseout="hideBubble(this)">
+                    <div class="thought-bubble">I might need some help...</div>
+                </div>
+                <div class="message other">Pretty good! Just working on some projects. 😊</div> -->
+            </div>
+            <!-- <div class="message user">That sounds awesome! Let me know if you need any help.</div> -->
+        </div>
+
+        <div class="bottom-section">
+            <div class="mood-score">
+                <img id="emotionImage" src="sadness.webp" alt="Progress Emotion" onmouseover="showBubble(this, 'Great choice of words! 10/10')" onmouseout="hideBubble(this)">
+                <div class="thought-bubble" id="thoughtBubble">Great choice of words! 10/10</div>
+            </div>
+            <input type="text" class="suggested-response" id="suggestedResponse" placeholder="Suggested Response...">
+            <div class="action-buttons">
+                <button onclick="editResponse()">Edit</button>
+                <button onclick="copyResponse()">Copy</button>
+                <button onclick="generateResponse()">Generate</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="javascript.js"></script>
+</body>
+</html>

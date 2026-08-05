@@ -1,0 +1,150 @@
+%==============================================================
+% Frank Hou — tiktok-recommendation-resume
+% Role: (General Hire) Machine Learning Engineer Graduate (TikTok Recommendation) - 2027 Start
+% Job Code A238379 | San Jose | tailored to exact JD | ~100-char one-line bullets
+% One-page. Compile with pdflatex.
+%==============================================================
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage[left=0.42in,right=0.42in,top=0.32in,bottom=0.32in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\footskip}{4pt}
+\raggedbottom
+
+% --- Section formatting: small-caps title + rule -------------
+\titleformat{\section}
+  {\large\scshape\raggedright}
+  {}{0em}{}[\vspace{-4pt}\rule{\linewidth}{0.5pt}\vspace{-3pt}]
+\titlespacing*{\section}{0pt}{3pt}{2pt}
+
+% --- List defaults -------------------------------------------
+\setlist[itemize]{leftmargin=1.1em,label={--},itemsep=0pt,parsep=0pt,topsep=1pt}
+
+% --- Resume macros (match existing template) -----------------
+\newcommand{\resumeWorkHeading}[2]{%
+  \vspace{2pt}\noindent
+  \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}r@{}}
+    #1 & #2 \\
+  \end{tabular*}%
+  \vspace{-2pt}
+}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{3pt}}
+\newcommand{\resumeItem}[1]{\item #1}
+
+\begin{document}
+
+%==============================================================
+% Header
+%==============================================================
+\begin{center}
+  {\huge \textbf{Frank Hou}} \\[2pt]
+  \small
+  \href{mailto:frankhou@utexas.edu}{frankhou@utexas.edu} $|$
+  \href{https://linkedin.com/in/yufanhou}{linkedin.com/in/yufanhou} $|$
+  \href{https://github.com/frankhou42}{github.com/frankhou42} $|$
+  \href{https://frankhou42.github.io/}{frankhou42.github.io}
+\end{center}
+\vspace{-4pt}
+
+%==============================================================
+% Education
+%==============================================================
+\section{Education}
+\resumeWorkHeading
+{\textbf{University of Texas at Austin} $|$ \emph{B.S. Computer Science, GPA: 3.7/4.0}}{Expected May 2027}
+\resumeItemListStart
+\resumeItem{Coursework: Machine Learning, Algorithms, Data Structures, Operating Systems, Linear Algebra}
+\resumeItemListEnd
+
+%==============================================================
+% Experience
+%==============================================================
+\section{Experience}
+\resumeWorkHeading
+{\textbf{Machine Intelligence Through Decision-Making Lab} $|$ \emph{ML Research Assistant}}{Fall 2025 -- Present}
+\resumeItemListStart
+\resumeItem{Designed \textbf{ranking} and value-estimation models in \textbf{PyTorch} (offline \textbf{RL}) over \textbf{100k+} trajectories}
+\resumeItem{Benchmarked \textbf{learning-to-rank} quality across 6 settings and built diagnostics over \textbf{50+} training runs}
+\resumeItem{Surfaced score collapse, high-variance rankings, and reward-alignment failures to drive model iteration}
+\resumeItemListEnd
+
+\resumeWorkHeading
+{\textbf{Amazon} $|$ \emph{Software Engineering Intern, Shipping}}{May 2026 -- Present}
+\resumeItemListStart
+\resumeItem{Built \textbf{large-scale} feature/data pipelines in \textbf{Spark}/\textbf{PySpark} (\textbf{AWS Glue}, \textbf{Hadoop}) on a \textbf{Tier-1} dataset}
+\resumeItem{Cut \textbf{p90/p99/p99.9} serving latency \textbf{$\sim$50\%} via a multi-tier cache (\textbf{Caffeine}, \textbf{Redis}, on-disk)}
+\resumeItem{Validated online through a \textbf{Weblab} \textbf{A/B} experiment with \textbf{shadow} testing before full production dial-up}
+\resumeItemListEnd
+
+\resumeWorkHeading
+{\textbf{Scale AI} $|$ \emph{GenAI / AI Safety Evaluation Intern}}{May 2025 -- May 2026}
+\resumeItemListStart
+\resumeItem{Built deterministic \textbf{Python} eval suites with \textbf{1,200+} unit/edge/regression cases across \textbf{120+} tasks}
+\resumeItem{Shipped tooling to a \textbf{production} platform running \textbf{10k+} weekly \textbf{LLM} quality evaluations}
+\resumeItemListEnd
+
+%==============================================================
+% Projects
+%==============================================================
+\section{Projects}
+\resumeWorkHeading
+{\textbf{Wildlife Strike Prediction} $|$ \emph{Kaggle Competition -- ML Pipeline} $|$ Python, PyTorch, XGBoost}{Spring 2026}
+\resumeItemListStart
+\resumeItem{Built an end-to-end \textbf{ML} pipeline for a \textbf{Kaggle} competition on \textbf{307K} aircraft-strike records}
+\resumeItem{Engineered \textbf{55} raw columns into \textbf{235} features with leakage-safe out-of-fold target encoding}
+\resumeItem{Stacked \textbf{8} models (\textbf{XGBoost}, \textbf{LightGBM}, \textbf{CatBoost}, \textbf{GPU} \textbf{PyTorch} MLP), reaching \textbf{0.945 ROC-AUC}}
+\resumeItemListEnd
+
+\resumeWorkHeading
+{\textbf{MoodScribe} $|$ \emph{Deep-Learning Assistant} $|$ PyTorch, LoRA, Flask, React}{Fall 2025}
+\resumeItemListStart
+\resumeItem{Built a full-stack \textbf{deep-learning} assistant serving \textbf{100+} users and \textbf{2,000+} messages via a \textbf{PyTorch} API}
+\resumeItem{Cut fine-tuning memory \textbf{70\%} with \textbf{LoRA}, \textbf{FlashAttention}, and \textbf{Unsloth}; improved output quality \textbf{22\%}}
+\resumeItemListEnd
+
+\resumeWorkHeading
+{\textbf{Tree} $|$ \emph{Local LLM Infrastructure} $|$ Swift, Ollama, LangChain}{Fall 2025 -- Spring 2026}
+\resumeItemListStart
+\resumeItem{Built a macOS \textbf{LLM} context system with \textbf{300+} saved branches and reusable context paths}
+\resumeItem{Integrated \textbf{Llama 3.2} via \textbf{Ollama} for private, zero-cost on-device inference}
+\resumeItemListEnd
+
+%==============================================================
+% Technical Skills
+%==============================================================
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0em,label={},itemsep=1pt,parsep=0pt,topsep=2pt]
+\item \textbf{Languages:} C/C++, Python, Java, SQL, Scala, TypeScript, JavaScript, Swift
+\item \textbf{ML/AI:} PyTorch, TensorFlow, Deep Learning, Ranking / Learning-to-Rank, NLP, Feature Engineering, Embeddings, XGBoost
+\item \textbf{CS Fundamentals:} Algorithms, Data Structures, Distributed Systems, Object-Oriented Design
+\item \textbf{Data \& Serving:} Apache Spark, PySpark, Hadoop, Model Serving, Low-Latency Inference, A/B Testing, AWS, Kubernetes, Git
+\end{itemize}
+
+%==============================================================
+% Leadership
+%==============================================================
+\section{Leadership}
+\resumeWorkHeading
+{\textbf{Texas ACM} $|$ \emph{Chair of Internal Affairs}}{Fall 2023 -- Present}
+\resumeItemListStart
+\resumeItem{Led \textbf{10+} technical and recruiting events, coordinating logistics, speakers, and member engagement}
+\resumeItemListEnd
+
+\resumeWorkHeading
+{\textbf{Sanger Learning Center} $|$ \emph{Computer Science Tutor}}{Fall 2025 -- Present}
+\resumeItemListStart
+\resumeItem{Tutored students in data structures, algorithms, and \textbf{C++}/\textbf{Python} problem-solving}
+\resumeItemListEnd
+
+\end{document}

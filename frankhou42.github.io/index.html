@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Frank Hou</title>
+<meta name="description" content="Frank Hou — CS @ UT Austin. Machine learning, LLM systems, and distributed infrastructure." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #fbfaf8;
+    --fg: #1a1a18;
+    --muted: #6b6a66;
+    --faint: #94938e;
+    --rule: #e6e4df;
+    --accent: #7a5c3e;
+    --card: #ffffff;
+    --maxw: 46rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14140f;
+      --fg: #eceae4;
+      --muted: #a5a29a;
+      --faint: #75736c;
+      --rule: #2b2a24;
+      --accent: #cba97f;
+      --card: #1b1b15;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 5.5rem 1.5rem 6rem; }
+
+  /* Header */
+  header { margin-bottom: 3.25rem; }
+  h1 {
+    font-family: "Newsreader", Georgia, serif;
+    font-weight: 500;
+    font-size: 2.7rem;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.35rem;
+    line-height: 1.1;
+  }
+  .tagline {
+    font-family: "Newsreader", Georgia, serif;
+    font-style: italic;
+    font-size: 1.22rem;
+    color: var(--muted);
+    margin: 0 0 1.4rem;
+  }
+  .contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.1rem;
+    font-size: 0.93rem;
+  }
+  .contact a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 1px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .contact a:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* Sections */
+  section { margin-top: 3rem; }
+  h2 {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin: 0 0 1.4rem;
+    padding-bottom: 0.55rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  p { margin: 0 0 1rem; }
+  a { color: var(--accent); }
+  .lead { color: var(--fg); }
+  .lead a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); }
+
+  /* Entry rows (experience / research) */
+  .entry { margin-bottom: 1.9rem; }
+  .entry:last-child { margin-bottom: 0; }
+  .entry-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.15rem;
+  }
+  .entry-title { font-weight: 600; font-size: 1.02rem; }
+  .entry-org { color: var(--muted); font-weight: 450; }
+  .entry-date {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.8rem;
+    color: var(--faint);
+    white-space: nowrap;
+  }
+  .entry-role {
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    color: var(--muted);
+    font-size: 1.02rem;
+    margin-bottom: 0.5rem;
+  }
+  ul { margin: 0.4rem 0 0; padding-left: 1.1rem; }
+  li { margin-bottom: 0.35rem; color: var(--muted); }
+  li::marker { color: var(--faint); }
+
+  /* Projects */
+  .project {
+    padding: 1.2rem 1.3rem;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    background: var(--card);
+    margin-bottom: 1rem;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .project:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .project-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+  .project-name { font-weight: 600; font-size: 1.05rem; }
+  .project-name a { color: var(--fg); text-decoration: none; }
+  .project-name a:hover { color: var(--accent); }
+  .project-stack {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    color: var(--faint);
+    white-space: nowrap;
+  }
+  .project p { color: var(--muted); margin: 0.45rem 0 0; font-size: 0.97rem; }
+
+  /* Skills */
+  .skills { display: grid; gap: 0.55rem; }
+  .skill-row { display: grid; grid-template-columns: 8.5rem 1fr; gap: 0.75rem; font-size: 0.95rem; }
+  .skill-cat { color: var(--faint); font-weight: 500; }
+  .skill-list { color: var(--muted); }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.85rem;
+    color: var(--faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  footer a { color: var(--faint); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+
+  @media (max-width: 34rem) {
+    .wrap { padding: 3.5rem 1.25rem 4rem; }
+    h1 { font-size: 2.1rem; }
+    .entry-head, .project-head { flex-direction: column; gap: 0.1rem; }
+    .skill-row { grid-template-columns: 1fr; gap: 0.1rem; }
+    .entry-date { order: -1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Frank Hou</h1>
+    <p class="tagline">Machine learning &amp; systems — building things that reason and scale.</p>
+    <div class="contact">
+      <a href="mailto:frankhou@utexas.edu">frankhou@utexas.edu</a>
+      <a href="https://github.com/frankhou42">GitHub</a>
+      <a href="https://linkedin.com/in/yufanhou">LinkedIn</a>
+      <a href="Frank_Hou_Resume.pdf">Résumé (PDF)</a>
+    </div>
+  </header>
+
+  <section id="about">
+    <p class="lead">
+      I&rsquo;m a Computer Science student at <strong>UT Austin</strong> (B.S., expected May 2027)
+      working at the intersection of machine learning and systems. Right now I&rsquo;m an
+      incoming SDE intern at <strong>Amazon</strong>, a GenAI evaluation intern at
+      <strong>Scale AI</strong>, and a research assistant in UT&rsquo;s
+      <strong>Machine Intelligence through Decision-making</strong> lab, where I study offline
+      reinforcement learning. I like problems where careful engineering and model behavior meet:
+      LLM evaluation, on-device inference, and low-latency distributed data pipelines.
+    </p>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">Amazon <span class="entry-org">· Shipping</span></span>
+        <span class="entry-date">May 2026 — Present</span>
+      </div>
+      <div class="entry-role">Software Engineering Intern</div>
+      <ul>
+        <li>Moving Delivery Windows schedule lookups from live DynamoDB reads to versioned S3 snapshots for lower-latency, lower-load serving.</li>
+        <li>AWS Glue / Spark ETL scanning 2M+ records every 30 min into read-optimized snapshots, with metadata-validated, rollback-safe promotion across hosts.</li>
+        <li>CDK, IAM, AppConfig, CodePipeline, and CloudWatch alarms for secure multi-stage releases with rollback visibility.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">Scale AI</span>
+        <span class="entry-date">May 2025 — May 2026</span>
+      </div>
+      <div class="entry-role">GenAI / AI Safety Evaluation Intern</div>
+      <ul>
+        <li>Authored prompts, reference solutions, and grading rubrics for 120+ Olympiad-level coding tasks to make model evaluation more reliable across reviewers.</li>
+        <li>Built deterministic Python test suites (1,200+ unit / edge / regression cases) that cut ambiguous grading decisions by ~35%.</li>
+        <li>Contributed to React / TypeScript / Flask tooling supporting 10k+ weekly evaluations, plus failure analyses guiding QA and model iteration.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">Machine Intelligence through Decision-making Lab <span class="entry-org">· UT Austin</span></span>
+        <span class="entry-date">Fall 2025 — Present</span>
+      </div>
+      <div class="entry-role">Research Assistant — Offline RL</div>
+      <ul>
+        <li>Extended the VIP and DERAIL offline-RL frameworks in PyTorch to analyze 100k+ Franka-Kitchen and D4RL trajectories for model-based planning.</li>
+        <li>Benchmarked learned value functions across 6 settings, surfacing score collapse, high-variance rankings, and weak action sensitivity.</li>
+        <li>Built diagnostics over 50+ planning runs to visualize value landscapes, rollout quality, and reward alignment.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="project">
+      <div class="project-head">
+        <span class="project-name"><a href="https://github.com/frankhou42/Tree">Tree</a></span>
+        <span class="project-stack">Swift · SwiftUI · Ollama</span>
+      </div>
+      <p>
+        A native macOS client for local LLMs. Streams responses from Llama&nbsp;3.2 through Ollama
+        entirely on-device, and lets you <em>branch</em> any reply into a side conversation that
+        carries the parent message as context — permanent branches persist across launches.
+      </p>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <span class="project-name"><a href="https://github.com/frankhou42/MoodScribe">MoodScribe</a></span>
+        <span class="project-stack">PyTorch · Unsloth · Flask · React</span>
+      </div>
+      <p>
+        An emotion-aware messaging assistant (HackTX). Fine-tuned a LoRA adapter with Unsloth /
+        FlashAttention to suggest tone-matched replies, served behind a Flask inference API with a
+        lightweight web client.
+      </p>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <span class="project-name"><a href="https://github.com/frankhou42/micrograd">micrograd</a></span>
+        <span class="project-stack">Python · autograd</span>
+      </div>
+      <p>
+        A scalar-valued automatic differentiation engine and small neural-net library built from
+        scratch — reverse-mode backprop over a dynamically constructed graph, with visualization.
+      </p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="skill-row"><span class="skill-cat">Languages</span><span class="skill-list">Python, Java, C/C++, TypeScript, JavaScript, Swift, SQL</span></div>
+      <div class="skill-row"><span class="skill-cat">ML / AI</span><span class="skill-list">PyTorch, TensorFlow, JAX, scikit-learn, NumPy, Pandas, LangChain, Offline RL, LLM evaluation</span></div>
+      <div class="skill-row"><span class="skill-cat">Infra</span><span class="skill-list">AWS, GCP, Kubernetes, Docker, Linux, CDK, DynamoDB, S3, Spark, CI/CD</span></div>
+      <div class="skill-row"><span class="skill-cat">Backend</span><span class="skill-list">Spring, Flask, Node.js, REST APIs, Git, CloudWatch, AppConfig, CodePipeline, IAM</span></div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Austin, TX</span>
+    <span>Built with plain HTML &amp; CSS · <a href="https://github.com/frankhou42/frankhou42.github.io">source</a></span>
+  </footer>
+
+</div>
+</body>
+</html>

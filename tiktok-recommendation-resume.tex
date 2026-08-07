@@ -1,7 +1,7 @@
 %==============================================================
 % Frank Hou — tiktok-recommendation-resume
 % Role: (General Hire) Machine Learning Engineer Graduate (TikTok Recommendation) - 2027 Start
-% Job Code A238379 | San Jose | tailored to exact JD | ~100-char one-line bullets
+% Job Code A238379 | San Jose | golden Microsoft format, tailored to JD
 % One-page. Compile with pdflatex.
 %==============================================================
 \documentclass[letterpaper,10pt]{article}
@@ -64,7 +64,7 @@
 \resumeWorkHeading
 {\textbf{University of Texas at Austin} $|$ \emph{B.S. Computer Science, GPA: 3.7/4.0}}{Expected May 2027}
 \resumeItemListStart
-\resumeItem{Coursework: Machine Learning, Algorithms, Data Structures, Operating Systems, Linear Algebra}
+\resumeItem{Coursework: Machine Learning, Algorithms, Data Structures, Operating Systems, Computer Architecture, Linear Algebra}
 \resumeItemListEnd
 
 %==============================================================
@@ -74,24 +74,23 @@
 \resumeWorkHeading
 {\textbf{Machine Intelligence Through Decision-Making Lab} $|$ \emph{ML Research Assistant}}{Fall 2025 -- Present}
 \resumeItemListStart
-\resumeItem{Designed \textbf{ranking} and value-estimation models in \textbf{PyTorch} (offline \textbf{RL}) over \textbf{100k+} trajectories}
-\resumeItem{Benchmarked \textbf{learning-to-rank} quality across 6 settings and built diagnostics over \textbf{50+} training runs}
-\resumeItem{Surfaced score collapse, high-variance rankings, and reward-alignment failures to drive model iteration}
+\resumeItem{Designed \textbf{ranking} and value-estimation models in \textbf{PyTorch} (offline \textbf{RL}: VIP, DERAIL), scoring and ranking candidate actions over \textbf{100k+} trajectories for model-based planning}
+\resumeItem{Benchmarked \textbf{learning-to-rank} quality across 6 settings and built diagnostics over \textbf{50+} runs, surfacing score collapse, high-variance rankings, and reward-alignment failures to drive model iteration}
 \resumeItemListEnd
 
 \resumeWorkHeading
 {\textbf{Amazon} $|$ \emph{Software Engineering Intern, Shipping}}{May 2026 -- Present}
 \resumeItemListStart
-\resumeItem{Built \textbf{large-scale} feature/data pipelines in \textbf{Spark}/\textbf{PySpark} (\textbf{AWS Glue}, \textbf{Hadoop}) on a \textbf{Tier-1} dataset}
-\resumeItem{Cut \textbf{p90/p99/p99.9} serving latency \textbf{$\sim$50\%} via a multi-tier cache (\textbf{Caffeine}, \textbf{Redis}, on-disk)}
-\resumeItem{Validated online through a \textbf{Weblab} \textbf{A/B} experiment with \textbf{shadow} testing before full production dial-up}
+\resumeItem{Built \textbf{large-scale} feature and data pipelines in \textbf{Apache Spark} / \textbf{PySpark} (\textbf{AWS Glue}, \textbf{Hadoop} S3A) processing a \textbf{Tier-1} dataset every \textbf{30 min}, publishing model-ready snapshots to \textbf{S3} for low-latency serving}
+\resumeItem{Cut \textbf{p90/p99/p99.9} serving latency \textbf{$\sim$50\%} by routing \textbf{Caffeine} (L1) and \textbf{Redis} (L2) cache misses to an on-disk store, eliminating hot \textbf{DynamoDB} reads on the ranking read path}
+\resumeItem{Rolled the migration to production behind a \textbf{Weblab} \textbf{A/B} experiment validated with \textbf{shadow} and \textbf{smoke} testing, measuring online metrics before full dial-up}
 \resumeItemListEnd
 
 \resumeWorkHeading
 {\textbf{Scale AI} $|$ \emph{GenAI / AI Safety Evaluation Intern}}{May 2025 -- May 2026}
 \resumeItemListStart
-\resumeItem{Built deterministic \textbf{Python} eval suites with \textbf{1,200+} unit/edge/regression cases across \textbf{120+} tasks}
-\resumeItem{Shipped tooling to a \textbf{production} platform running \textbf{10k+} weekly \textbf{LLM} quality evaluations}
+\resumeItem{Created prompts, reference solutions, and rubrics for \textbf{120+} Olympiad-level coding tasks, improving reliability and consistency of \textbf{LLM} model evaluation across reviewers}
+\resumeItem{Built deterministic \textbf{Python} test suites with \textbf{1,200+} unit, edge, and regression cases, and shipped tooling to a \textbf{production} platform running \textbf{10k+} weekly \textbf{LLM} evaluations}
 \resumeItemListEnd
 
 %==============================================================
@@ -99,25 +98,25 @@
 %==============================================================
 \section{Projects}
 \resumeWorkHeading
+{\textbf{Two-Tower Recommender} $|$ \emph{Retrieval System} $|$ PyTorch, FAISS}{Spring 2026}
+\resumeItemListStart
+\resumeItem{Built a two-tower \textbf{retrieval} model in \textbf{PyTorch} trained with \textbf{in-batch negatives} (sampled softmax) on \textbf{575K} MovieLens interactions, serving \textbf{top-K} candidates over a \textbf{FAISS} ANN index}
+\resumeItem{Engineered separate user- and item-tower encoders with \textbf{L2}-normalized \textbf{embeddings} and chronological train/test splits to prevent leakage}
+\resumeItem{Evaluated \textbf{Recall@K} against a popularity baseline, improving \textbf{Recall@50} by \textbf{5\%}; open-sourced on \textbf{GitHub}}
+\resumeItemListEnd
+
+\resumeWorkHeading
 {\textbf{Wildlife Strike Prediction} $|$ \emph{Kaggle Competition -- ML Pipeline} $|$ Python, PyTorch, XGBoost}{Spring 2026}
 \resumeItemListStart
-\resumeItem{Built an end-to-end \textbf{ML} pipeline for a \textbf{Kaggle} competition on \textbf{307K} aircraft-strike records}
-\resumeItem{Engineered \textbf{55} raw columns into \textbf{235} features with leakage-safe out-of-fold target encoding}
-\resumeItem{Stacked \textbf{8} models (\textbf{XGBoost}, \textbf{LightGBM}, \textbf{CatBoost}, \textbf{GPU} \textbf{PyTorch} MLP), reaching \textbf{0.945 ROC-AUC}}
+\resumeItem{Built an end-to-end \textbf{ML} pipeline for a \textbf{Kaggle} competition on \textbf{307K} records, engineering \textbf{55} raw columns into \textbf{235} features via text mining, cyclical encoding, and leakage-safe out-of-fold target encoding}
+\resumeItem{Stacked \textbf{8} models---\textbf{XGBoost}, \textbf{LightGBM}, \textbf{CatBoost}, a \textbf{GPU} \textbf{PyTorch} MLP---with a K-fold meta-learner, reaching \textbf{0.945 ROC-AUC} on a severe \textbf{6\%} minority class via class-weighting and threshold tuning}
 \resumeItemListEnd
 
 \resumeWorkHeading
 {\textbf{MoodScribe} $|$ \emph{Deep-Learning Assistant} $|$ PyTorch, LoRA, Flask, React}{Fall 2025}
 \resumeItemListStart
-\resumeItem{Built a full-stack \textbf{deep-learning} assistant serving \textbf{100+} users and \textbf{2,000+} messages via a \textbf{PyTorch} API}
-\resumeItem{Cut fine-tuning memory \textbf{70\%} with \textbf{LoRA}, \textbf{FlashAttention}, and \textbf{Unsloth}; improved output quality \textbf{22\%}}
-\resumeItemListEnd
-
-\resumeWorkHeading
-{\textbf{Tree} $|$ \emph{Local LLM Infrastructure} $|$ Swift, Ollama, LangChain}{Fall 2025 -- Spring 2026}
-\resumeItemListStart
-\resumeItem{Built a macOS \textbf{LLM} context system with \textbf{300+} saved branches and reusable context paths}
-\resumeItem{Integrated \textbf{Llama 3.2} via \textbf{Ollama} for private, zero-cost on-device inference}
+\resumeItem{Built a full-stack \textbf{deep-learning} assistant serving \textbf{100+} users and \textbf{2,000+} messages via \textbf{React} onboarding, \textbf{Flask} inference APIs, and \textbf{PyTorch} generation}
+\resumeItem{Cut fine-tuning memory \textbf{70\%} with \textbf{LoRA}, \textbf{FlashAttention}, and \textbf{Unsloth} on limited \textbf{GPU} compute, improving output quality \textbf{22\%}}
 \resumeItemListEnd
 
 %==============================================================
@@ -125,10 +124,10 @@
 %==============================================================
 \section{Technical Skills}
 \begin{itemize}[leftmargin=0em,label={},itemsep=1pt,parsep=0pt,topsep=2pt]
+\item \textbf{ML/AI:} PyTorch, TensorFlow, Deep Learning, Recommendation, Ranking / Learning-to-Rank, NLP, Feature Engineering, Embeddings, XGBoost
 \item \textbf{Languages:} C/C++, Python, Java, SQL, Scala, TypeScript, JavaScript, Swift
-\item \textbf{ML/AI:} PyTorch, TensorFlow, Deep Learning, Ranking / Learning-to-Rank, NLP, Feature Engineering, Embeddings, XGBoost
-\item \textbf{CS Fundamentals:} Algorithms, Data Structures, Distributed Systems, Object-Oriented Design
-\item \textbf{Data \& Serving:} Apache Spark, PySpark, Hadoop, Model Serving, Low-Latency Inference, A/B Testing, AWS, Kubernetes, Git
+\item \textbf{CS Fundamentals:} Algorithms, Data Structures, Distributed Systems, Object-Oriented Design, Probability \& Statistics
+\item \textbf{Data \& Serving:} Apache Spark, PySpark, Hadoop, FAISS, Model Serving, Low-Latency Inference, A/B Testing, AWS, Kubernetes, Git
 \end{itemize}
 
 %==============================================================
@@ -138,13 +137,13 @@
 \resumeWorkHeading
 {\textbf{Texas ACM} $|$ \emph{Chair of Internal Affairs}}{Fall 2023 -- Present}
 \resumeItemListStart
-\resumeItem{Led \textbf{10+} technical and recruiting events, coordinating logistics, speakers, and member engagement}
+\resumeItem{Led operations for \textbf{10+} technical and recruiting events by coordinating logistics, speaker planning, and member engagement}
 \resumeItemListEnd
 
 \resumeWorkHeading
 {\textbf{Sanger Learning Center} $|$ \emph{Computer Science Tutor}}{Fall 2025 -- Present}
 \resumeItemListStart
-\resumeItem{Tutored students in data structures, algorithms, and \textbf{C++}/\textbf{Python} problem-solving}
+\resumeItem{Tutored students in data structures, algorithms, and \textbf{C++}/\textbf{Python}, building independent problem-solving habits}
 \resumeItemListEnd
 
 \end{document}
